@@ -1,0 +1,9 @@
+Dockerfile
+
+docker-compose.yaml
+
+.git/
+
+__pycache__
+
+.vscode/

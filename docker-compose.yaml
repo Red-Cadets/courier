@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  courier-bot:
+    restart: always
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: courier-tg-bot
+    command: flask run --host ${HOST} --port ${PORT}
+    volumes:
+      - ./bot:/home/app/bot
+    ports:
+      - "127.0.0.1:${PORT}:${PORT}"
+    networks:
+      - courier-network
+    env_file:
+      - ./.env
+    environment:
+      FLASK_ENV: development
+
+networks:
+  courier-network:
